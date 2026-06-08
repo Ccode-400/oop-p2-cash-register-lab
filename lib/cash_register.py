@@ -42,4 +42,19 @@ class CashRegister:
 
             print(f"After the discount, the total comes to ${self.total}.")
 
+    def void_last_transaction(self):
+        if not self.previous_transactions:
+            return
+
+        last = self.previous_transactions.pop()
+
+        self.total -= last["price"] * last["quantity"]
+
+        for _ in range(last["quantity"]):
+            if last["item"] in self.items:
+                self.items.remove(last["item"])
+
+        if self.total < 0:
+            self.total = 0.0
+
 
