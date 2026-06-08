@@ -31,3 +31,15 @@ class CashRegister:
             "quantity": quantity
         })
 
+    def apply_discount(self):
+        if self.discount == 0:
+            print("There is no discount to apply.")
+        else:
+            self.total = self.total * (100 - self.discount) / 100
+
+            if self.total == int(self.total):
+                self.total = int(self.total)
+
+            print(f"After the discount, the total comes to ${self.total}.")
+
+
